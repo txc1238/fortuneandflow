@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinese Zodiac Fortune Calculator | Fortune & Flow</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+.tool-box { max-width: 640px; margin: 40px auto; padding: 32px; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+.tool-box h1 { font-size: 1.8rem; margin-bottom: 8px; }
+.tool-box .sub { color: #666; margin-bottom: 24px; }
+select, input[type=number] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; margin-bottom: 16px; }
+button { width: 100%; padding: 14px; background: #1a5f4a; color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
+button:hover { background: #144a3a; }
+.result { margin-top: 24px; padding: 20px; background: #f7f3ee; border-radius: 12px; display: none; }
+.result h2 { color: #1a5f4a; margin-bottom: 12px; }
+.score { font-size: 2rem; font-weight: bold; color: #c9a227; }
+.tip { font-size: .9rem; color: #888; margin-top: 16px; }
+</style>
+</head>
+<body>
+<nav><a href="../index.html">Fortune & Flow</a></nav>
+<div class="tool-box">
+<h1>Chinese Zodiac Fortune Calculator</h1>
+<p class="sub">See your wealth outlook for the coming year based on your birth sign.</p>
+<label>Your zodiac sign</label>
+<select id="sign">
+<option value="">-- Select --</option>
+<option>Rat</option><option>Ox</option><option>Tiger</option><option>Rabbit</option>
+<option>Dragon</option><option>Snake</option><option>Horse</option><option>Goat</option>
+<option>Monkey</option><option>Rooster</option><option>Dog</option><option>Pig</option>
+</select>
+<label>Birth year</label>
+<input type="number" id="year" placeholder="e.g. 1990" min="1924" max="2012">
+<button onclick="calc()">Check My Fortune</button>
+<div class="result" id="result">
+<h2 id="rTitle"></h2>
+<p class="score" id="rScore"></p>
+<p id="rText"></p>
+<p class="tip">For entertainment only. Not financial advice. <a href="../disclaimer.html">Read disclaimer</a>.</p>
+</div>
+</div>
+<script>
+const data = {
+Rat:{w:78,t:"Steady gains through networking. Watch impulsive spending in spring."},
+Ox:{w:72,t:"Slow but solid accumulation. Best year for long-term savings plans."},
+Tiger:{w:65,t:"High risk, high reward. Bold moves pay off but hedge your bets."},
+Rabbit:{w:80,t:"Lucky in partnerships. Joint ventures or shared investments favored."},
+Dragon:{w:85,t:"Peak visibility year. Leadership roles bring financial upside."},
+Snake:{w:70,t:"Wisdom over speed. Research before committing capital."},
+Horse:{w:75,t:"Momentum year. Good for starting side income streams."},
+Goat:{w:68,t:"Focus on stability. Avoid speculative assets this cycle."},
+Monkey:{w:82,t:"Clever positioning wins. Diversify across three or more assets."},
+Rooster:{w:74,t:"Detail-oriented gains. Side hustles and skill upgrades pay."},
+Dog:{w:71,t:"Loyalty rewards. Trusted advisors and long-term clients bring returns."},
+Pig:{w:77,t:"Generosity cycle. Giving and community involvement open doors."}
+};
+function calc(){
+const s=document.getElementById('sign').value, y=document.getElementById('year').value;
+if(!s||!y){alert('Please select your sign and enter your birth year.');return;}
+const d=data[s], r=document.getElementById('result);
+document.getElementById('rTitle').textContent=s+' ('+y+')';
+document.getElementById('rScore').textContent='Wealth Score: '+d.w+' / 100';
+document.getElementById('rText').textContent=d.t;
+r.style.display='block'; r.scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body></html>

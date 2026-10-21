@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment Return Calculator | Fortune & Flow</title>
+<link rel="stylesheet" href="../styles.css">
+<style>
+.tool-box { max-width: 640px; margin: 40px auto; padding: 32px; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+.tool-box h1 { font-size: 1.8rem; margin-bottom: 8px; }
+.tool-box .sub { color: #666; margin-bottom: 24px; }
+label { display: block; margin-bottom: 4px; font-weight: 600; }
+input[type=number] { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; margin-bottom: 16px; }
+button { width: 100%; padding: 14px; background: #1a5f4a; color: #fff; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
+button:hover { background: #144a3a; }
+.result { margin-top: 24px; padding: 20px; background: #f7f3ee; border-radius: 12px; display: none; }
+.big { font-size: 2rem; font-weight: bold; color: #1a5f4a; }
+.row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e5e0d8; }
+.tip { font-size: .9rem; color: #888; margin-top: 16px; }
+</style>
+</head>
+<body>
+<nav><a href="../index.html">Fortune & Flow</a></nav>
+<div class="tool-box">
+<h1>Investment Return Calculator</h1>
+<p class="sub">Compare how your money grows across different annual return rates.</p>
+<label>Initial investment ($)</label>
+<input type="number" id="principal" value="10000" min="100">
+<label>Years</label>
+<input type="number" id="years" value="10" min="1" max="50">
+<button onclick="calc()">Calculate</button>
+<div class="result" id="result">
+<div class="row"><span>At 4% (bonds/savings)</span><span class="big" id="r4"></span></div>
+<div class="row"><span>At 7% (index funds avg)</span><span class="big" id="r7"></span></div>
+<div class="row"><span>At 10% (stocks long-term)</span><span class="big" id="r10"></span></div>
+<p class="tip">Illustrative only, assumes annual compounding. Not financial advice. <a href="../disclaimer.html">Read disclaimer</a>.</p>
+</div>
+</div>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+function calc(){
+const p=+document.getElementById('principal').value, y=+document.getElementById('years').value;
+if(!p||!y){alert('Enter both values.');return;}
+const r=document.getElementById('result);
+document.getElementById('r4').textContent=fmt(p*Math.pow(1.04,y));
+document.getElementById('r7').textContent=fmt(p*Math.pow(1.07,y));
+document.getElementById('r10').textContent=fmt(p*Math.pow(1.10,y));
+r.style.display='block'; r.scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body></html>
