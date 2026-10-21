@@ -35,6 +35,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px 24px;
+  flex-wrap: wrap;
 }
 .logo {
   font-size: 1.25rem;
@@ -43,10 +45,15 @@ body {
   text-decoration: none;
   letter-spacing: 0.5px;
 }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 22px;
+}
 nav a {
   color: var(--muted);
   text-decoration: none;
-  margin-left: 28px;
   font-size: 0.95rem;
   transition: color 0.2s;
 }
@@ -151,10 +158,12 @@ nav a:hover { color: var(--text); }
   border-radius: 20px;
   margin-bottom: 10px;
 }
+.article-item h2,
 .article-item h3 {
   font-size: 1.15rem;
   margin-bottom: 8px;
 }
+.article-item a { color: var(--accent); }
 .article-item p { color: var(--muted); font-size: 0.95rem; }
 
 /* Footer */
@@ -168,7 +177,8 @@ nav a:hover { color: var(--text); }
 .site-footer a { color: var(--accent); text-decoration: none; }
 
 @media (max-width: 640px) {
-  nav a { margin-left: 16px; font-size: 0.85rem; }
+  nav { gap: 6px 14px; }
+  nav a { font-size: 0.85rem; }
   .hero { padding: 60px 0 50px; }
   .hero-buttons { flex-direction: column; align-items: center; }
   .btn { width: 100%; max-width: 280px; text-align: center; }
