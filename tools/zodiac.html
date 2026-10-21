@@ -19,7 +19,18 @@ button:hover { background: #144a3a; }
 </style>
 </head>
 <body>
-<nav><a href="../index.html">Fortune & Flow</a></nav>
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Fortune & Flow</a>
+    <nav>
+      <a href="../articles.html">Articles</a>
+      <a href="index.html">Tools</a>
+      <a href="../about.html">About</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </nav>
+  </div>
+</header>
 <div class="tool-box">
 <h1>Chinese Zodiac Fortune Calculator</h1>
 <p class="sub">See your wealth outlook for the coming year based on your birth sign.</p>
@@ -58,7 +69,7 @@ Pig:{w:77,t:"Generosity cycle. Giving and community involvement open doors."}
 function calc(){
 const s=document.getElementById('sign').value, y=document.getElementById('year').value;
 if(!s||!y){alert('Please select your sign and enter your birth year.');return;}
-const d=data[s], r=document.getElementById('result);
+const d=data[s], r=document.getElementById('result');
 document.getElementById('rTitle').textContent=s+' ('+y+')';
 document.getElementById('rScore').textContent='Wealth Score: '+d.w+' / 100';
 document.getElementById('rText').textContent=d.t;

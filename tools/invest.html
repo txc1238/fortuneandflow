@@ -20,7 +20,18 @@ button:hover { background: #144a3a; }
 </style>
 </head>
 <body>
-<nav><a href="../index.html">Fortune & Flow</a></nav>
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="logo">Fortune & Flow</a>
+    <nav>
+      <a href="../articles.html">Articles</a>
+      <a href="index.html">Tools</a>
+      <a href="../about.html">About</a>
+      <a href="../privacy.html">Privacy</a>
+      <a href="../disclaimer.html">Disclaimer</a>
+    </nav>
+  </div>
+</header>
 <div class="tool-box">
 <h1>Investment Return Calculator</h1>
 <p class="sub">Compare how your money grows across different annual return rates.</p>
@@ -41,7 +52,7 @@ function fmt(n){return '$'+Math.round(n).toLocaleString();}
 function calc(){
 const p=+document.getElementById('principal').value, y=+document.getElementById('years').value;
 if(!p||!y){alert('Enter both values.');return;}
-const r=document.getElementById('result);
+const r=document.getElementById('result');
 document.getElementById('r4').textContent=fmt(p*Math.pow(1.04,y));
 document.getElementById('r7').textContent=fmt(p*Math.pow(1.07,y));
 document.getElementById('r10').textContent=fmt(p*Math.pow(1.10,y));
